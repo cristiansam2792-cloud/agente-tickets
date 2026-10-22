@@ -1,0 +1,4 @@
+mcp>=2.2
+anthropic
+$env:TICKETS_USUARIO = "ccarrera"
+$env:TICKETS_PASSWORD = "JessSam2021.,"

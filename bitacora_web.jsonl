@@ -1,0 +1,42 @@
+{"fecha": "2026-10-21T12:02:43", "usuario": "cristian", "pregunta": "¿Qué tickets están abiertos y nadie ha tomado? ¿Cuánto llevan esperando?", "herramientas": ["tickets_sin_asignar"], "segundos": 33.3}
+{"fecha": "2026-10-21T12:08:02", "usuario": "israel", "pregunta": "¿Qué tickets vencen en las próximas 48 horas y quién los tiene?", "herramientas": ["tickets_por_vencer"], "segundos": 12.1}
+{"fecha": "2026-10-21T12:08:41", "usuario": "israel", "pregunta": "cuantos tiene abiertos Yoselin", "herramientas": ["listar_tickets", "listar_tickets"], "segundos": 9.4}
+{"fecha": "2026-10-21T12:09:53", "usuario": "israel", "pregunta": "Dame un resumen de tickets abiertos y en proceso por planta.", "herramientas": ["listar_tickets", "listar_tickets"], "segundos": 7.2}
+{"fecha": "2026-10-21T12:12:27", "usuario": "israel", "pregunta": "¿Quién del equipo tiene más tickets vencidos? Dame un conteo por responsable.", "herramientas": ["tickets_por_vencer"], "segundos": 10.9}
+{"fecha": "2026-10-21T12:13:34", "usuario": "israel", "pregunta": "¿Qué tickets vencen en las próximas 48 horas y quién los tiene?", "herramientas": ["tickets_por_vencer"], "segundos": 37.9}
+{"fecha": "2026-10-21T12:14:40", "usuario": "israel", "pregunta": "¿Quién del equipo tiene más tickets vencidos? Dame un conteo por responsable.", "herramientas": ["tickets_por_vencer"], "segundos": 12.0}
+{"fecha": "2026-10-21T12:15:30", "usuario": "israel", "pregunta": "CUANTOS TICKET TIENE ASIGNADO ALBERTO", "herramientas": ["listar_tickets", "listar_tickets"], "segundos": 8.4}
+{"fecha": "2026-10-21T12:16:04", "usuario": "israel", "pregunta": "José Alberto Franco", "herramientas": ["listar_tickets", "listar_tickets", "listar_tickets"], "segundos": 10.5}
+{"fecha": "2026-10-21T12:16:29", "usuario": "israel", "pregunta": "que tickes tiene asignado israel", "herramientas": ["listar_tickets"], "segundos": 7.2}
+{"fecha": "2026-10-21T12:16:42", "usuario": "israel", "pregunta": "Jose Alberto Franco", "herramientas": ["listar_tickets", "listar_tickets", "listar_tickets", "tickets_por_vencer"], "segundos": 11.8}
+{"fecha": "2026-10-21T12:16:48", "usuario": "israel", "pregunta": "que tickets tiene asignado isamperio", "herramientas": ["listar_tickets", "listar_tickets", "listar_tickets"], "segundos": 9.3}
+{"fecha": "2026-10-21T12:17:12", "usuario": "israel", "pregunta": "que tickets tiene asignado Israel Samperio Rivera", "herramientas": ["listar_tickets", "listar_tickets", "listar_tickets"], "segundos": 12.6}
+{"fecha": "2026-10-21T12:17:29", "usuario": "israel", "pregunta": "castellanos", "herramientas": ["listar_tickets"], "segundos": 7.0}
+{"fecha": "2026-10-21T12:17:49", "usuario": "israel", "pregunta": "que ticket tiene asignado Gerardo", "herramientas": ["listar_tickets"], "segundos": 6.9}
+{"fecha": "2026-10-21T12:29:27", "usuario": "israel", "pregunta": "Dame un resumen de tickets abiertos y en proceso por planta.", "herramientas": ["listar_tickets", "listar_tickets", "listar_tickets"], "segundos": 39.8}
+{"fecha": "2026-10-21T12:40:25", "usuario": "cristian", "pregunta": "Cristian Carrera tiene algun ticket?", "herramientas": ["listar_tickets", "listar_tickets", "listar_tickets"], "segundos": 44.3}
+{"fecha": "2026-10-21T12:41:18", "usuario": "cristian", "pregunta": "ok, Israel Samperio tiene alguno?", "herramientas": ["listar_tickets", "listar_tickets", "listar_tickets"], "segundos": 5.9}
+{"fecha": "2026-10-21T12:41:34", "usuario": "cristian", "pregunta": "Jose Alberto Franco tiene?", "herramientas": ["listar_tickets", "listar_tickets", "listar_tickets"], "segundos": 10.3}
+{"fecha": "2026-10-21T12:42:01", "usuario": "cristian", "pregunta": "que tal Yoselin?", "herramientas": ["listar_tickets"], "segundos": 5.8}
+{"fecha": "2026-10-21T12:43:52", "usuario": "cristian", "pregunta": "Yoselin tiene algun ticket?", "herramientas": ["listar_tickets"], "segundos": 5.6}
+{"fecha": "2026-10-21T12:44:29", "usuario": "cristian", "pregunta": "de los tickets que tiene vencidos abel lira dime de que fueron", "herramientas": ["listar_tickets", "tickets_por_vencer"], "segundos": 9.2}
+{"fecha": "2026-10-21T12:45:15", "usuario": "cristian", "pregunta": "¿que tiene pendiente Christian Castro?", "herramientas": ["listar_tickets"], "segundos": 6.6}
+{"fecha": "2026-10-21T12:45:44", "usuario": "cristian", "pregunta": "En hidalgo hay algun ticket sin asignar?", "herramientas": ["tickets_sin_asignar"], "segundos": 6.6}
+{"fecha": "2026-10-21T12:47:21", "usuario": "cristian", "pregunta": "quien es la persona con menor rendimiento? es decir que no cierra tickets ni soluciona", "herramientas": ["listar_tickets", "solucionados_sin_cerrar", "tickets_por_vencer"], "segundos": 14.1}
+{"fecha": "2026-10-21T12:50:10", "usuario": "cristian", "pregunta": "cual es la planta que mas tickets generados tiene?", "herramientas": ["resumen_por_planta", "listar_tickets"], "segundos": 13.6}
+{"fecha": "2026-10-21T12:52:30", "usuario": "cristian", "pregunta": "no vel la info", "herramientas": ["resumen_por_planta", "listar_tickets"], "segundos": 47.8}
+{"fecha": "2026-10-21T12:55:31", "usuario": "cristian", "pregunta": "Dame un resumen de tickets abiertos y en proceso por planta.", "herramientas": ["resumen_por_planta"], "segundos": 8.6}
+{"fecha": "2026-10-21T12:56:55", "usuario": "cristian", "pregunta": "con estos datos dame la planta con menor rendimientp", "herramientas": ["resumen_por_planta", "listar_tickets", "tickets_sin_asignar"], "segundos": 13.1}
+{"fecha": "2026-10-21T12:58:45", "usuario": "cristian", "pregunta": "cual es el ticket mas viejo que tienes para lectura?", "herramientas": ["listar_tickets", "listar_tickets", "listar_tickets"], "segundos": 14.6}
+{"fecha": "2026-10-21T13:00:14", "usuario": "cristian", "pregunta": "cual es el ticket que mas colchon tiene (me refiero que le pusieron una fecha muy larga de fecha compromiso)", "herramientas": ["tickets_por_vencer"], "segundos": 9.8}
+{"fecha": "2026-10-21T16:33:58", "usuario": "cristian", "pregunta": "¿Qué tickets vencen en las próximas 48 horas y quién los tiene?", "herramientas": ["tickets_por_vencer"], "segundos": 51.0}
+{"fecha": "2026-10-21T16:45:34", "usuario": "cristian", "pregunta": "¿Qué tickets vencen en las próximas 48 horas y quién los tiene?", "herramientas": ["tickets_por_vencer"], "segundos": 49.0}
+{"fecha": "2026-10-21T16:46:38", "usuario": "cristian", "pregunta": "cuantos tickets en toluca tengo sin tomar", "herramientas": ["tickets_sin_asignar"], "segundos": 6.2}
+{"fecha": "2026-10-21T16:47:20", "usuario": "cristian", "pregunta": "basado en los datos quien resuelve mas tickets", "herramientas": ["listar_tickets", "solucionados_sin_cerrar"], "segundos": 13.2}
+{"fecha": "2026-10-21T16:49:46", "usuario": "cristian", "pregunta": "Dame un resumen de tickets abiertos y en proceso por planta.", "herramientas": ["resumen_por_planta"], "segundos": 8.6}
+{"fecha": "2026-10-21T16:50:33", "usuario": "cristian", "pregunta": "de los tickets abierto sin resolver cual es el que tiene mas colchon de tiempo (me refiero a que esta muy largo la fecha cierre de compromiso)", "herramientas": ["tickets_por_vencer"], "segundos": 9.7}
+{"fecha": "2026-10-21T16:52:19", "usuario": "cristian", "pregunta": "en base a la cantidad de dias de fecha compromiso calculadas, cuales son las fechas de cierre que no te hacen sentido porque se podrian resolver antes", "herramientas": ["tickets_por_vencer"], "segundos": 15.0}
+{"fecha": "2026-10-21T16:52:46", "usuario": "cristian", "pregunta": "cuales son los tickets en base a la cantidad de dias de fecha compromiso calculadas, cuales son las fechas de cierre que no te hacen sentido porque se podrian resolver antes", "herramientas": ["tickets_por_vencer", "solucionados_sin_cerrar"], "segundos": 15.2}
+{"fecha": "2026-10-21T16:53:56", "usuario": "cristian", "pregunta": "no vi la informacion", "herramientas": ["listar_tickets", "tickets_por_vencer", "solucionados_sin_cerrar"], "segundos": 18.1}
+{"fecha": "2026-10-21T16:59:00", "usuario": "cristian", "pregunta": "¿Quién del equipo tiene más tickets vencidos? Dame un conteo por responsable.", "herramientas": ["tickets_por_vencer"], "segundos": 45.9}
+{"fecha": "2026-10-21T18:07:14", "usuario": "cristian", "pregunta": "quien de los responsables es el mas sopenco (que no resuelve tickets en tiempo)", "herramientas": ["tickets_por_vencer", "solucionados_sin_cerrar"], "segundos": 49.5}

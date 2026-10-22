@@ -1,0 +1,82 @@
+[
+  {
+    "id": 101,
+    "titulo": "VPN no conecta en laptop de ventas",
+    "responsable": "Ana Torres",
+    "planta": "Hidalgo",
+    "prioridad": "Alta",
+    "estado": "Abierto",
+    "creado": "2026-10-05T09:00",
+    "fecha_compromiso": "2026-10-12T18:00"
+  },
+  {
+    "id": 102,
+    "titulo": "Alta de usuario SAP para nuevo almacenista",
+    "responsable": "Luis Méndez",
+    "planta": "Toluca",
+    "prioridad": "Media",
+    "estado": "En proceso",
+    "creado": "2026-10-06T11:30",
+    "fecha_compromiso": "2026-10-13T12:00"
+  },
+  {
+    "id": 103,
+    "titulo": "Impresora de embarques sin conexión",
+    "responsable": "Ana Torres",
+    "planta": "Cuernavaca",
+    "prioridad": "Media",
+    "estado": "Abierto",
+    "creado": "2026-10-07T08:15",
+    "fecha_compromiso": "2026-10-16T17:00"
+  },
+  {
+    "id": 104,
+    "titulo": "Restaurar carpeta borrada en NAS de calidad",
+    "responsable": "Jorge Ruiz",
+    "planta": "Hidalgo",
+    "prioridad": "Alta",
+    "estado": "Abierto",
+    "creado": "2026-10-08T16:40",
+    "fecha_compromiso": "2026-10-11T20:00"
+  },
+  {
+    "id": 105,
+    "titulo": "Cambio de equipo a gerente de producción",
+    "responsable": "Luis Méndez",
+    "planta": "Hidalgo",
+    "prioridad": "Baja",
+    "estado": "Cerrado",
+    "creado": "2026-10-01T10:00",
+    "fecha_compromiso": "2026-10-09T18:00"
+  },
+  {
+    "id": 106,
+    "titulo": "Alerta de Wazuh: intentos de login fallidos en servidor de archivos",
+    "responsable": "Jorge Ruiz",
+    "planta": "Corporativo",
+    "prioridad": "Crítica",
+    "estado": "En proceso",
+    "creado": "2026-10-10T07:05",
+    "fecha_compromiso": "2026-10-12T10:00"
+  },
+  {
+    "id": 107,
+    "titulo": "Configurar regla FortiGate para proveedor de báscula",
+    "responsable": "Ana Torres",
+    "planta": "Toluca",
+    "prioridad": "Media",
+    "estado": "Abierto",
+    "creado": "2026-10-09T13:20",
+    "fecha_compromiso": "2026-10-20T18:00"
+  },
+  {
+    "id": 108,
+    "titulo": "Job de Veeam con advertencia en VM de SAP",
+    "responsable": "Jorge Ruiz",
+    "planta": "Hidalgo",
+    "prioridad": "Alta",
+    "estado": "Abierto",
+    "creado": "2026-10-10T22:10",
+    "fecha_compromiso": "2026-10-13T09:00"
+  }
+]

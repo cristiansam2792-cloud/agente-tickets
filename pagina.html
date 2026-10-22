@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tickets TIC · Asistente</title>
+<style>
+  :root {
+    --verde: #6f9a35; --verde-osc: #557a26; --verde-claro: #eef4e4;
+    --fondo: #f5f6f3; --panel: #ffffff; --texto: #1f2a1c; --suave: #66705f;
+    --borde: #dfe3d8; --linea: #eceee8; --alerta: #b4442f; --sombra: 0 1px 2px rgba(30,40,20,.06), 0 4px 16px rgba(30,40,20,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --verde: #8fbf4f; --verde-osc: #a6d266; --verde-claro: #23301a;
+      --fondo: #131611; --panel: #1b1f18; --texto: #e7ecdf; --suave: #9aa58f;
+      --borde: #2e3529; --linea: #262c22; --alerta: #ec7b62; --sombra: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--fondo); color: var(--texto);
+         font: 15px/1.5 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif; }
+  header { background: var(--verde); color: #fff; }
+  @media (prefers-color-scheme: dark) { header { background: #2c3d1d; } }
+  .barra { max-width: 980px; margin: 0 auto; padding: 14px 16px; display: flex;
+           align-items: center; gap: 12px; flex-wrap: wrap; }
+  .marca { font-weight: 700; font-size: 17px; letter-spacing: .2px; }
+  .marca span { font-weight: 400; opacity: .85; }
+  .info { margin-left: auto; font-size: 13px; opacity: .92; display: flex; gap: 14px; flex-wrap: wrap; }
+  main { max-width: 980px; margin: 0 auto; padding: 20px 16px 140px; }
+
+  .intro h1 { font-size: 20px; margin: 4px 0 4px; }
+  .intro p { margin: 0 0 16px; color: var(--suave); }
+  .rapidas { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+  .rapida { text-align: left; background: var(--panel); border: 1px solid var(--borde);
+            border-radius: 10px; padding: 12px 14px; cursor: pointer; color: inherit;
+            font: inherit; box-shadow: var(--sombra); transition: border-color .15s, transform .15s; }
+  .rapida:hover { border-color: var(--verde); transform: translateY(-1px); }
+  .rapida b { display: block; font-size: 14.5px; }
+  .rapida small { color: var(--suave); font-size: 12.5px; }
+  .rapida:disabled { opacity: .5; cursor: default; transform: none; }
+
+  #hilo { margin-top: 22px; display: flex; flex-direction: column; gap: 14px; }
+  .q { align-self: flex-end; max-width: 85%; background: var(--verde); color: #fff;
+       padding: 9px 14px; border-radius: 14px 14px 4px 14px; }
+  @media (prefers-color-scheme: dark) { .q { background: #3d5626; } }
+  .a { background: var(--panel); border: 1px solid var(--borde); border-radius: 12px;
+       padding: 14px 18px; box-shadow: var(--sombra); overflow-x: auto; }
+  .a.error { border-color: var(--alerta); color: var(--alerta); }
+  .a h1, .a h2, .a h3 { font-size: 15.5px; margin: 14px 0 6px; }
+  .a p { margin: 6px 0; }
+  .a ul, .a ol { margin: 6px 0; padding-left: 22px; }
+  .a code { background: var(--verde-claro); padding: 0 4px; border-radius: 4px; font-size: 13px; }
+  .a hr { border: 0; border-top: 1px solid var(--linea); margin: 10px 0; }
+  .a table { border-collapse: collapse; margin: 10px 0; font-size: 13.5px; width: 100%; }
+  .a th, .a td { border-bottom: 1px solid var(--linea); padding: 6px 8px; text-align: left; vertical-align: top; }
+  .a th { background: var(--verde-claro); font-weight: 600; white-space: nowrap; }
+  .a a.tk { color: var(--verde-osc); font-weight: 600; text-decoration: none; }
+  .a a.tk:hover { text-decoration: underline; }
+  .pie { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--linea);
+         font-size: 12px; color: var(--suave); display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .chip { background: var(--verde-claro); color: var(--verde-osc); border-radius: 99px; padding: 1px 9px; }
+  .cargando { color: var(--suave); display: flex; align-items: center; gap: 10px; }
+  .punto { width: 8px; height: 8px; border-radius: 50%; background: var(--verde); animation: pulso 1s infinite ease-in-out; }
+  .punto:nth-child(2) { animation-delay: .15s; } .punto:nth-child(3) { animation-delay: .3s; }
+  @keyframes pulso { 0%,100% { opacity: .25; transform: scale(.8); } 50% { opacity: 1; transform: scale(1); } }
+
+  .entrada { position: fixed; left: 0; right: 0; bottom: 0; background: linear-gradient(transparent, var(--fondo) 28%); padding: 24px 16px 16px; }
+  .caja { max-width: 980px; margin: 0 auto; display: flex; gap: 8px; background: var(--panel);
+          border: 1px solid var(--borde); border-radius: 12px; padding: 8px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+  textarea { flex: 1; border: 0; resize: none; font: inherit; color: inherit; background: transparent;
+             padding: 6px 8px; outline: none; max-height: 140px; }
+  .btn { border: 0; border-radius: 8px; padding: 0 16px; font: inherit; font-weight: 600; cursor: pointer; }
+  .enviar { background: var(--verde); color: #fff; }
+  .enviar:disabled { opacity: .45; cursor: default; }
+  .nueva { background: transparent; color: var(--suave); border: 1px solid var(--borde); }
+  .nota { max-width: 980px; margin: 6px auto 0; font-size: 12px; color: var(--suave); text-align: center; }
+  @media (max-width: 560px) { .q { max-width: 95%; } .nueva { display: none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="barra">
+    <div class="marca">Tickets TIC <span>· Asistente</span></div>
+    <div class="info"><span id="usuario"></span><span id="frescura"></span></div>
+  </div>
+</header>
+
+<main>
+  <section class="intro">
+    <h1>¿Qué quieres saber de los tickets?</h1>
+    <p>Elige una pregunta rápida o escribe la tuya. Las respuestas usan los datos de la plataforma desde el mes pasado.</p>
+    <div class="rapidas" id="rapidas"></div>
+  </section>
+  <section id="hilo" aria-live="polite"></section>
+</main>
+
+<div class="entrada">
+  <form class="caja" id="form">
+    <textarea id="texto" rows="1" maxlength="500" placeholder="Ej. ¿Qué tiene pendiente Yahir en Cuernavaca?"></textarea>
+    <button type="button" class="btn nueva" id="nueva" title="Empezar sin el contexto anterior">Nueva</button>
+    <button type="submit" class="btn enviar" id="enviar">Preguntar</button>
+  </form>
+  <div class="nota">Puedes hacer preguntas de seguimiento sobre la respuesta anterior. Verifica en la plataforma antes de escalar.</div>
+</div>
+
+<script>
+const PLATAFORMA = "http://192.168.20.19:8080/tickets/show/";
+const RAPIDAS = [
+  ["Por vencer en 48 horas", "Vencidos y próximos, con responsable", "¿Qué tickets vencen en las próximas 48 horas y quién los tiene?"],
+  ["Sin asignar", "Abiertos que nadie ha tomado", "¿Qué tickets están abiertos y nadie ha tomado? ¿Cuánto llevan esperando?"],
+  ["Solucionados sin cerrar", "Trabajo hecho que falta cerrar", "¿Qué tickets están marcados como solucionados pero siguen sin cerrar? Agrúpalos por responsable."],
+  ["Carga por responsable", "Quién tiene más vencidos", "¿Quién del equipo tiene más tickets vencidos? Dame un conteo por responsable."],
+  ["Resumen por planta", "Abiertos y en proceso por sitio", "Dame un resumen de tickets abiertos y en proceso por planta."],
+  ["Pendientes de una persona…", "Escribe el nombre", "¿Qué tiene pendiente "],
+];
+const NOMBRES_HERR = {
+  tickets_por_vencer: "Por vencer", tickets_sin_asignar: "Sin asignar",
+  solucionados_sin_cerrar: "Solucionados sin cerrar", listar_tickets: "Listado", detalle_ticket: "Detalle",
+};
+
+const $ = (id) => document.getElementById(id);
+const hilo = $("hilo"), texto = $("texto"), enviar = $("enviar");
+let historial = [], ocupado = false;
+
+for (const [titulo, sub, pregunta] of RAPIDAS) {
+  const b = document.createElement("button");
+  b.className = "rapida"; b.type = "button";
+  b.innerHTML = "<b></b><small></small>";
+  b.querySelector("b").textContent = titulo;
+  b.querySelector("small").textContent = sub;
+  b.onclick = () => {
+    if (pregunta.endsWith(" ")) { texto.value = pregunta; texto.focus(); ajustar(); }
+    else preguntar(pregunta);
+  };
+  $("rapidas").appendChild(b);
+}
+
+// Markdown mínimo (títulos, listas, tablas, negritas, código), sin librerías externas.
+// Todo el texto se escapa primero, así que la respuesta nunca puede inyectar HTML.
+function esc(s) { return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function enLinea(s) {
+  return esc(s)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/(^|[^*])\*([^*\s][^*]*)\*/g, "$1<em>$2</em>");
+}
+function celdas(fila) { return fila.trim().replace(/^\||\|$/g, "").split("|").map((c) => c.trim()); }
+function markdown(md) {
+  const lineas = md.replace(/\r/g, "").split("\n");
+  let html = "", i = 0;
+  while (i < lineas.length) {
+    const l = lineas[i];
+    if (/^\s*\|.*\|\s*$/.test(l) && /^\s*\|?\s*:?-{2,}/.test(lineas[i + 1] || "")) {
+      const cab = celdas(l); i += 2;
+      html += "<table><thead><tr>" + cab.map((c) => `<th>${enLinea(c)}</th>`).join("") + "</tr></thead><tbody>";
+      while (i < lineas.length && /^\s*\|.*\|\s*$/.test(lineas[i])) {
+        html += "<tr>" + celdas(lineas[i]).map((c) => `<td>${enLinea(c)}</td>`).join("") + "</tr>"; i++;
+      }
+      html += "</tbody></table>"; continue;
+    }
+    const h = l.match(/^(#{1,4})\s+(.*)$/);
+    if (h) { html += `<h3>${enLinea(h[2])}</h3>`; i++; continue; }
+    if (/^\s*([-*•]|\d+[.)])\s+/.test(l)) {
+      const ord = /^\s*\d/.test(l); html += ord ? "<ol>" : "<ul>";
+      while (i < lineas.length && /^\s*([-*•]|\d+[.)])\s+/.test(lineas[i])) {
+        html += "<li>" + enLinea(lineas[i].replace(/^\s*([-*•]|\d+[.)])\s+/, "")) + "</li>"; i++;
+      }
+      html += ord ? "</ol>" : "</ul>"; continue;
+    }
+    if (/^\s*(---+|\*\*\*+)\s*$/.test(l)) { html += "<hr>"; i++; continue; }
+    if (!l.trim()) { i++; continue; }
+    const parr = [];
+    while (i < lineas.length && lineas[i].trim() && !/^\s*\|/.test(lineas[i]) && !/^#{1,4}\s/.test(lineas[i]) && !/^\s*([-*•]|\d+[.)])\s+/.test(lineas[i])) {
+      parr.push(enLinea(lineas[i])); i++;
+    }
+    html += `<p>${parr.join("<br>")}</p>`;
+  }
+  return html;
+}
+
+function render(md) {
+  const div = document.createElement("div");
+  div.innerHTML = markdown(md);
+  // Convierte #36367 en enlace a la plataforma
+  const walker = document.createTreeWalker(div, NodeFilter.SHOW_TEXT);
+  const nodos = []; while (walker.nextNode()) nodos.push(walker.currentNode);
+  for (const n of nodos) {
+    if (!/#\d{4,6}\b/.test(n.nodeValue) || n.parentElement.closest("a")) continue;
+    const frag = document.createDocumentFragment();
+    n.nodeValue.split(/(#\d{4,6}\b)/).forEach((parte) => {
+      const m = parte.match(/^#(\d{4,6})$/);
+      if (m) {
+        const a = document.createElement("a");
+        a.href = PLATAFORMA + m[1]; a.target = "_blank"; a.rel = "noopener";
+        a.className = "tk"; a.textContent = parte; frag.appendChild(a);
+      } else frag.appendChild(document.createTextNode(parte));
+    });
+    n.replaceWith(frag);
+  }
+  return div;
+}
+
+function burbuja(clase, contenido) {
+  const el = document.createElement("div");
+  el.className = clase;
+  if (typeof contenido === "string") el.textContent = contenido; else el.appendChild(contenido);
+  hilo.appendChild(el);
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+  return el;
+}
+
+function estadoOcupado(v) {
+  ocupado = v; enviar.disabled = v;
+  document.querySelectorAll(".rapida").forEach((b) => (b.disabled = v));
+}
+
+async function preguntar(pregunta) {
+  pregunta = pregunta.trim();
+  if (ocupado || pregunta.length < 3) return;
+  estadoOcupado(true);
+  burbuja("q", pregunta);
+  texto.value = ""; ajustar();
+
+  const espera = burbuja("a", "");
+  espera.innerHTML = '<div class="cargando"><span class="punto"></span><span class="punto"></span><span class="punto"></span><span>Consultando la plataforma…</span></div>';
+  const lento = setTimeout(() => {
+    const s = espera.querySelector(".cargando span:last-child");
+    if (s) s.textContent = "Descargando tickets actualizados, puede tardar unos segundos…";
+  }, 6000);
+
+  try {
+    const r = await fetch("api/preguntar", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pregunta, historial: historial.slice(-2) }),
+    });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.detail && typeof d.detail === "string" ? d.detail : "Ocurrió un error (" + r.status + ").");
+    espera.replaceChildren(render(d.respuesta));
+    const pie = document.createElement("div");
+    pie.className = "pie";
+    const usadas = [...new Set(d.herramientas || [])];
+    pie.append("Consultó: ");
+    if (!usadas.length) pie.append("ninguna herramienta");
+    for (const h of usadas) {
+      const c = document.createElement("span"); c.className = "chip";
+      c.textContent = NOMBRES_HERR[h] || h; pie.appendChild(c);
+    }
+    pie.append(` · ${d.segundos} s`);
+    espera.appendChild(pie);
+    historial.push({ pregunta, respuesta: d.respuesta.slice(0, 4000) });
+    actualizarEstado();
+  } catch (e) {
+    espera.classList.add("error");
+    espera.textContent = e.message || "No se pudo conectar con el servidor.";
+  } finally {
+    clearTimeout(lento);
+    estadoOcupado(false);
+    texto.focus();
+  }
+}
+
+async function actualizarEstado() {
+  try {
+    const d = await (await fetch("api/estado")).json();
+    $("usuario").textContent = "👤 " + d.usuario;
+    $("frescura").textContent = d.datos_minutos == null ? "" :
+      d.datos_minutos <= 1 ? "Datos recién actualizados" : `Datos de hace ${d.datos_minutos} min`;
+  } catch {}
+}
+
+function ajustar() { texto.style.height = "auto"; texto.style.height = Math.min(texto.scrollHeight, 140) + "px"; }
+texto.addEventListener("input", ajustar);
+texto.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); preguntar(texto.value); }
+});
+$("form").addEventListener("submit", (e) => { e.preventDefault(); preguntar(texto.value); });
+$("nueva").onclick = () => { historial = []; hilo.replaceChildren(); texto.focus(); window.scrollTo({ top: 0, behavior: "smooth" }); };
+actualizarEstado();
+</script>
+</body>
+</html>
